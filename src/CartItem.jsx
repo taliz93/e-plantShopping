@@ -18,20 +18,23 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleContinueShopping = (e) => {
-   e.onContinueShopping(e);
+   onContinueShopping(e);
   };
 
   const handleCheckoutShopping = (e) => {
+    e.preventDefault();
     alert('Throw NotImplementedException');
   }
 
   const handleIncrement = (item) => {
-    const newVal = item.quantity++;
+    let newVal = item.quantity;
+    newVal = newVal+1;
     dispatch(updateQuantity({name: item.name, quantity: newVal}));
   };
 
   const handleDecrement = (item) => {
-    const newVal = item.quantity--;
+    let newVal = item.quantity;
+    newVal = newVal-1;
     if (newVal < 1) {
       dispatch(removeItem({name: item.name}));
     } else {
@@ -75,7 +78,7 @@ const CartItem = ({ onContinueShopping }) => {
       <div className="continue_shopping_btn">
         <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
         <br />
-        <button className="get-started-button1">Checkout</button>
+        <button className="get-started-button1" onClick={(e) => handleCheckoutShopping(e)}>Checkout</button>
       </div>
     </div>
   );
