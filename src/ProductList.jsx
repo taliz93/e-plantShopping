@@ -286,7 +286,8 @@ function ProductList({ onHomeClick }) {
                         <div>{cat.category}</div>
                       </h1>
                       <div className="product-list"> 
-                        {cat.plants.map((plant,pindex) => (
+                        {cat.plants.map((plant,pindex) => ( 
+                          //how was I supposed to know about these class names?
                           <div className="product-card" key={pindex}>
                             <div className="product-title">{plant.name}</div>
                             <img className="product-image" src={plant.image} alt={plant.name}/>
